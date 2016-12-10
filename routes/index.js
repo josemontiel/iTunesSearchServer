@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var db = require("../utils/mongoUtil").getDb();
   db.collection("clicks").find().count(true, {}, function(e, count) {
-    res.render('index', { title: 'Express', clickCount: count});
+    res.render('index', { title: 'iTunes Search Click Tracker', clickCount: count});
 
   });
 });

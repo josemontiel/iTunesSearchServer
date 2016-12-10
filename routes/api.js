@@ -13,13 +13,9 @@ router.route('/event').post(function (req, res) {
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress;
 
-    var event = {
-        type: 'click',
-        ip: ip
-    };
-
     var db = require("../utils/mongoUtil").getDb();
-    db.collection('clicks').insertOne(event, {}, function() {
+
+    db.collection('clicks').insertOne(req.body, {}, function() {
         res.send('Click Tracked');
     });
 
