@@ -7,7 +7,7 @@ router.get('/', function (req, res, next) {
     res.send('respond with a resource');
 });
 
-router.route('/event').get(function (req, res) {
+router.route('/event').post(function (req, res) {
     var ip = req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
