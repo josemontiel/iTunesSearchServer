@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var mongoUtil = require('./utils/mongoUtil');
 
+// Connect to our MongoDB instance
 mongoUtil.connectToServer( function( err ) {
   var path = require('path');
   var favicon = require('serve-favicon');

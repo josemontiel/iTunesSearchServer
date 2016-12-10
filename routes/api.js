@@ -8,6 +8,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.route('/event').post(function (req, res) {
+    // Get User's IP for tracking
     var ip = req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
@@ -15,8 +16,10 @@ router.route('/event').post(function (req, res) {
 
     req.body.ip = ip;
 
+    // Get Already Opened DB instance.
     var db = require("../utils/mongoUtil").getDb();
 
+    // Insert Event into our db.
     db.collection('clicks').insertOne(req.body, {}, function() {
         res.send('Click Tracked');
     });
